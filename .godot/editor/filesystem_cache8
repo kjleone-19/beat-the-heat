@@ -1,0 +1,16 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1725229707
+icon.svg::CompressedTexture2D::5938377318185454307::1725229683::1725229707::1::::<><>::
+README.md::TextFile::-1::1725229668::0::1::::<><>::
+::res://scenes/::1725229683
+main.tscn::PackedScene::2665323806600342176::1725229683::0::1::::<><>::res://scripts/Actors.gd<>uid://dxkny5l2usvqi::::res://sprites/ClickMarker3.png<>res://scripts/Character.gd<>res://scripts/CharacterBody2D.gd<>uid://deg8usv87vqeg::::res://sprites/ranger_m.png<>res://scenes/Status.gd
+Status.gd::GDScript::-1::1725229683::0::1::::<>Control<>::
+::res://scripts/::1725229683
+Actors.gd::GDScript::-1::1725229683::0::1::::<>Node2D<>::
+Character.gd::GDScript::-1::1725229683::0::1::::<>Node2D<>::
+CharacterBody2D.gd::GDScript::-1::1725229683::0::1::::<>CharacterBody2D<>::
+ClickMarker.gd::GDScript::-1::1725229683::0::1::::<>Node2D<>::
+::res://sprites/::1725229683
+ClickMarker3.png::CompressedTexture2D::8795083006201895660::1725229683::1725229707::1::::<><>::
+NivekEnoel.png::CompressedTexture2D::2250438917713502317::1725229683::1725229707::1::::<><>::
+ranger_m.png::CompressedTexture2D::7454444048199353686::1725229683::1725229707::1::::<><>::

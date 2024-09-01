@@ -1,0 +1,230 @@
+[gd_scene load_steps=25 format=3 uid="uid://bd8dq1x3n6e5m"]
+
+[ext_resource type="Script" path="res://scripts/Actors.gd" id="1_nxpfm"]
+[ext_resource type="Texture2D" uid="uid://dxkny5l2usvqi" path="res://sprites/ClickMarker3.png" id="2_58x3g"]
+[ext_resource type="Script" path="res://scripts/Character.gd" id="3_s2bb3"]
+[ext_resource type="Script" path="res://scripts/CharacterBody2D.gd" id="4_kj1a2"]
+[ext_resource type="Texture2D" uid="uid://7cenuuy7foef" path="res://sprites/NivekEnoel.png" id="5_rkws0"]
+[ext_resource type="Script" path="res://scenes/Status.gd" id="6_juon5"]
+
+[sub_resource type="GDScript" id="GDScript_yr1eg"]
+script/source = "extends Node2D
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+@onready var _animated_sprite = $ClickMarker
+@onready var _previous_click = $PreviousClick
+var sprite_frames = 12 # number of frames in the click marker sprite
+
+var screensize
+func _ready():
+	screensize = get_viewport_rect().size
+
+func play_animation(pos):
+	_animated_sprite.visible = true
+	_animated_sprite.position = pos
+	_animated_sprite.play(\"click\")
+	_animated_sprite.frame = 0
+
+func previous_position_marker(pos):
+	_previous_click.position = pos
+	_previous_click.stop()
+	_previous_click.visible = false
+
+func clear_previous_click():
+	_previous_click.frame = 0
+	_previous_click.visible = true
+	_previous_click.play(\"prev\")
+
+func clear_animations():
+	if _animated_sprite.frame == sprite_frames-1:
+		_animated_sprite.stop()
+		_animated_sprite.frame = 0
+		_animated_sprite.visible = false
+		clear_previous_click()
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isvxl"]
+atlas = ExtResource("2_58x3g")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wom35"]
+atlas = ExtResource("2_58x3g")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efgtp"]
+atlas = ExtResource("2_58x3g")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_853sp"]
+atlas = ExtResource("2_58x3g")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3jr7"]
+atlas = ExtResource("2_58x3g")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3xol"]
+atlas = ExtResource("2_58x3g")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qp1oq"]
+atlas = ExtResource("2_58x3g")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ie1e3"]
+atlas = ExtResource("2_58x3g")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61kc3"]
+atlas = ExtResource("2_58x3g")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ip5j6"]
+atlas = ExtResource("2_58x3g")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uooqw"]
+atlas = ExtResource("2_58x3g")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydgv4"]
+atlas = ExtResource("2_58x3g")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h3ws1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isvxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wom35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efgtp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_853sp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3jr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3xol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qp1oq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ie1e3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61kc3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ip5j6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uooqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydgv4")
+}],
+"loop": true,
+"name": &"click",
+"speed": 60.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50jlx"]
+atlas = ExtResource("2_58x3g")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1dmcm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50jlx")
+}],
+"loop": true,
+"name": &"prev",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fydqa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_rkws0")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_rkws0")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_rkws0")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_rkws0")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oir8a"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Actors" type="Node2D" parent="."]
+script = ExtResource("1_nxpfm")
+
+[node name="ClickWrapper" type="Node2D" parent="Actors"]
+script = SubResource("GDScript_yr1eg")
+
+[node name="ClickMarker" type="AnimatedSprite2D" parent="Actors/ClickWrapper"]
+sprite_frames = SubResource("SpriteFrames_h3ws1")
+animation = &"click"
+frame_progress = 0.728398
+
+[node name="PreviousClick" type="AnimatedSprite2D" parent="Actors/ClickWrapper"]
+sprite_frames = SubResource("SpriteFrames_1dmcm")
+animation = &"prev"
+
+[node name="Character" type="Node2D" parent="."]
+script = ExtResource("3_s2bb3")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Character"]
+script = ExtResource("4_kj1a2")
+
+[node name="CharacterSprite" type="AnimatedSprite2D" parent="Character/CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_fydqa")
+animation = &"up"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Character/CharacterBody2D"]
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_oir8a")
+
+[node name="Status" type="Control" parent="Character"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_juon5")
